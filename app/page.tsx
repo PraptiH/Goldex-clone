@@ -1,9 +1,10 @@
+import HeroSection from "@/components/section/HeroSection";
 
 
 export default function Home() {
   return (
-    <div className="">
-     
+    <div className="flex-1">
+      <HeroSection />
     </div>
   );
 }

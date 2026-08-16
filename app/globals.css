@@ -2,4 +2,56 @@
 
 body {
   font-family: var(--font-satoshi), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.btn {
+  background-image: linear-gradient(
+    144deg,
+    rgb(254, 222, 112) 0%,
+    rgb(240, 222, 131) 15%,
+    rgb(180, 123, 0) 50%,
+    rgb(237, 220, 133) 100%
+  );
+}
+
+.btnAnim {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+
+  background-position: 32% 28%;
+  background-size: 240% 240%;
+
+  transition: background-position 0.7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.btnAnim:hover {
+  background-position: 78% 72%;
+}
+
+.btnAnim::after {
+  content: "";
+  pointer-events: none;
+  z-index: 0;
+
+  position: absolute;
+  inset: -50% -80%;
+
+  background: linear-gradient(
+    118deg,
+    #0000 42%,
+    #fff8d233 47%,
+    #ffffff8c 50%,
+    #fff8d226 53%,
+    #0000 58%
+  );
+
+  transform: translateX(-45%);
+
+  transition: transform 0.7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.btnAnim:hover::after {
+  transform: translateX(45%);
 }
