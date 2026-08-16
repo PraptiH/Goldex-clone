@@ -4,11 +4,11 @@ import uae from '@/public/Images/uae.gif'
 
 export default function HeroSection() {
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-dvh 2xl:min-h-256 pt-20 lg:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-dvh 2xl:min-h-256 pt-20 lg:p-2">
 
             <div className="order-1 lg:order-0 flex flex-col justify-center lg:justify-start px-5 sm:px-10 lg:px-[10.4%] pb-10 2xl:pb-20 pt-8 sm:pt-12 lg:pt-44 xl:pt-48 2xl:pt-52">
 
-                <div className="flex flex-col items-start gap-4 sm:gap-5 w-full max-w-150 shrink-0 border border-red-800">
+                <div className="flex flex-col items-start gap-4 sm:gap-5 w-full max-w-150 shrink-0">
                     <h1 className="font-extrabold text-[36px] sm:text-5xl lg:text-[48px] xl:text-[56px] 2xl:text-[64px] leading-normal sm:leading-[1.12] w-full self-stretch">Your gold, always within reach.</h1>
                     <p className="text-base sm:text-lg lg:text-xl text-black/50 leading-relaxed sm:leading-normal w-full self-stretch">Trade, store, and receive real gold and silver, all from <br className="hidden sm:block" />
                         one app, all backed by shops you can actually visit.</p>

@@ -1,12 +1,35 @@
+"use client";
+
 import Image from "next/image";
 import logo from "@/public/Images/Heading.svg"
 import en from "@/public/Images/en.svg"
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
-    return (
-        <div className="flex items-center justify-between absolute inset-x-0 top-0 z-50 px-18 border py-4">
 
-            <div className="flex items-end gap-8.5 border">
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    return (
+        <div className={`w-full grid grid-cols-[1fr_auto] lg:grid-cols-[51.25%_48.8%] items-center gap-4 lg:gap-0 px-5 sm:px-10 lg:px-0 py-3 lg:py-4 fixed inset-x-0 top-0 z-50 border pt-6 transition-colors duration-300
+        ${scrolled
+                ? "bg-white border-b border-black/10"
+                : "bg-transparent border-b border-transparent"
+            }
+    `}>
+
+            <div className="flex items-end gap-8.5 lg:px-[10.4%]">
                 <div className="inline-flex shrink-0 pb-1 cursor-pointer">
                     <Image width="120" height="31" src={logo} alt="" />
                 </div>
@@ -21,9 +44,13 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className="flex shrink-0 items-center justify-end gap-2.5 border">
+            <div className="flex shrink-0 items-center justify-end gap-2.5 lg:pr-10 ">
 
-                <button className="inline-flex items-center justify-center gap-2 rounded-lg border border-black/10 px-4 py-3 font-medium text-sm text-black bg-transparent hover:bg-black/5 cursor-pointer">
+                <button className={`inline-flex items-center justify-center gap-2 rounded-lg  px-4 py-3 font-medium text-sm text-black bg-transparent hover:bg-black/5 cursor-pointer
+                    ${scrolled
+                        ? "border border-black/10"
+                        : "border-none"
+                    }`}>
                     <span className="size-5">
                         <Image width="20" height="14" className="w-full h-full object-cover rounded-sm" src={en} alt="" />
                     </span>
@@ -40,5 +67,6 @@ export default function Navbar() {
                 </button>
             </div>
         </div>
-    )
+    );
 }
+
