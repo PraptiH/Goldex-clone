@@ -2,11 +2,18 @@
 
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue } from "framer-motion";
 
 interface HeroSlide {
     image: StaticImageData;
     objectPosition: string;
+    content: React.ReactNode;
+    contentArea: {
+        left: number;
+        right: number;
+        top: number;
+        bottom: number;
+    };
 }
 
 interface HeroImageSliderProps {
@@ -25,6 +32,39 @@ export default function HeroImageSlider({
     const [activeSlide, setActiveSlide] = useState(0);
     const [nextSlide, setNextSlide] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    const [contentPosition, setContentPosition] = useState({ x: 0, y: 0 });
+
+
+    const handleMouseMove = (
+        event: React.MouseEvent<HTMLDivElement>
+    ) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+
+        const mouseX =
+            (event.clientX - rect.left) / rect.width;
+
+        const mouseY =
+            (event.clientY - rect.top) / rect.height;
+
+        const area = images[activeSlide].contentArea;
+
+        const x =
+            area.left +
+            mouseX * (area.right - area.left);
+
+        const y =
+            area.top +
+            mouseY * (area.bottom - area.top);
+
+        setContentPosition({
+            x,
+            y,
+        });
+    };
 
     // Preload images
     useEffect(() => {
@@ -34,17 +74,6 @@ export default function HeroImageSlider({
         });
     }, [images]);
 
-    // Autoplay
-    useEffect(() => {
-        if (isTransitioning) return;
-
-        const timer = setTimeout(() => {
-            setNextSlide((activeSlide + 1) % images.length);
-            setIsTransitioning(true);
-        }, interval);
-
-        return () => clearTimeout(timer);
-    }, [activeSlide, images.length, interval, isTransitioning]);
 
     // Finish transition
     useEffect(() => {
@@ -62,8 +91,38 @@ export default function HeroImageSlider({
         return () => clearTimeout(timer);
     }, [isTransitioning, nextSlide]);
 
+    useEffect(() => {
+        if (isTransitioning || isHovered) return;
+
+        const timer = setTimeout(() => {
+            setNextSlide((activeSlide + 1) % images.length);
+            setIsTransitioning(true);
+        }, interval);
+
+        return () => clearTimeout(timer);
+    }, [
+        activeSlide,
+        images.length,
+        interval,
+        isTransitioning,
+        isHovered,
+    ]);
+
     return (
-        <div className="relative h-full w-full overflow-hidden">
+        <div className="relative h-full w-full overflow-hidden"
+            onMouseEnter={(event) => {
+                setIsHovered(true);
+
+                const rect = event.currentTarget.getBoundingClientRect();
+
+                mouseX.set(event.clientX - rect.left + 24);
+                mouseY.set(event.clientY - rect.top + 24);
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => {
+                setIsHovered(false);
+            }}
+        >
 
             {/* Current image always stays underneath */}
             <Image
@@ -118,6 +177,34 @@ export default function HeroImageSlider({
                     })}
                 </>
             )}
+
+            <AnimatePresence>
+                {isHovered && !isTransitioning && (
+                    <motion.div
+                        className="pointer-events-none absolute z-30 hidden lg:block"
+                        animate={{
+                            left: `${contentPosition.x}%`,
+                            top: `${contentPosition.y}%`,
+                            opacity: 1,
+                            scale: 1,
+                        }}
+                        transition={{
+                            left: {
+                                type: "spring",
+                                stiffness: 250,
+                                damping: 25,
+                            },
+                            top: {
+                                type: "spring",
+                                stiffness: 250,
+                                damping: 25,
+                            },
+                        }}
+                    >
+                        {images[activeSlide].content}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
