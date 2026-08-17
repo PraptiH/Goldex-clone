@@ -1,8 +1,53 @@
+"use client"
 import Image from "next/image";
 import hero1 from '@/public/Images/hero1.webp'
+import hero2 from '@/public/Images/hero2.webp'
+import hero3 from '@/public/Images/hero3.png'
 import uae from '@/public/Images/uae.gif'
+import HeroImageSlider from "./HeroImageSlider";
 
 export default function HeroSection() {
+
+    const heroSlides = [
+        {
+            image: hero1,
+            objectPosition: "center center",
+        },
+        {
+            image: hero2,
+            objectPosition: "75% center",
+        },
+        {
+            image: hero3,
+            objectPosition: "70% center",
+        },
+    ];
+
+    // const heroImages = [hero1, hero2, hero3];
+
+    // const slides = [
+    //     {
+
+    //         image: hero1
+    //     },
+    //     {
+    //         image: hero2
+    //     },
+    //     {
+    //         image: hero3
+    //     },
+    // ];
+
+    // const [activeSlide, setActiveSlide] = useState(0);
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setActiveSlide((prev) => (prev + 1) % 3);
+    //     }, 4000);
+
+    //     return () => clearInterval(interval);
+    // }, []);
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-dvh 2xl:min-h-256 pt-20 lg:p-2">
 
@@ -38,11 +83,11 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            
-                <div className="order-2 relative h-svh lg:h-full w-full">
-                    <Image fill className="object-cover" src={hero1} alt="" />
-                </div>
-           
+
+            <div className="order-2 relative h-svh lg:h-full w-full overflow-hidden">
+                <HeroImageSlider images={heroSlides} />
+            </div>
+
         </div>
     )
 }
