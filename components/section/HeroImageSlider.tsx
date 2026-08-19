@@ -6,7 +6,14 @@ import { AnimatePresence, motion, useMotionValue } from "framer-motion";
 
 interface HeroSlide {
     image: StaticImageData;
-    objectPosition: string;
+    objectPosition: {
+        mobile: string;
+        sm?: string;
+        md?: string;
+        lg: string;
+        xl?: string;
+        "2xl"?: string;
+    };
     content: React.ReactNode;
     contentArea: {
         left: number;
@@ -38,6 +45,47 @@ export default function HeroImageSlider({
 
     const [contentPosition, setContentPosition] = useState({ x: 0, y: 0 });
 
+    const [screenWidth, setScreenWidth] = useState(0);
+
+    useEffect(() => {
+        const updateWidth = () => {
+            setScreenWidth(window.innerWidth);
+        };
+
+        updateWidth();
+
+        window.addEventListener("resize", updateWidth);
+
+        return () => {
+            window.removeEventListener("resize", updateWidth);
+        };
+    }, []);
+
+    const getObjectPosition = (slide: HeroSlide) => {
+        const position = slide.objectPosition;
+
+        if (screenWidth >= 1536 && position["2xl"]) {
+            return position["2xl"];
+        }
+
+        if (screenWidth >= 1280 && position.xl) {
+            return position.xl;
+        }
+
+        if (screenWidth >= 1024 && position.lg) {
+            return position.lg;
+        }
+
+        if (screenWidth >= 768 && position.md) {
+            return position.md;
+        }
+
+        if (screenWidth >= 640 && position.sm) {
+            return position.sm;
+        }
+
+        return position.mobile;
+    };
 
     const handleMouseMove = (
         event: React.MouseEvent<HTMLDivElement>
@@ -133,7 +181,7 @@ export default function HeroImageSlider({
                 sizes="(min-width: 2000px) 50vw, 100vw"
                 className="object-cover"
                 style={{
-                    objectPosition: images[activeSlide].objectPosition,
+                    objectPosition: getObjectPosition(images[activeSlide]),
                 }}
             />
 
@@ -169,7 +217,7 @@ export default function HeroImageSlider({
                                     sizes="(min-width: 2000px) 50vw, 100vw"
                                     className="object-cover"
                                     style={{
-                                        objectPosition: images[nextSlide].objectPosition,
+                                        objectPosition: getObjectPosition(images[nextSlide]),
                                     }}
                                 />
                             </motion.div>

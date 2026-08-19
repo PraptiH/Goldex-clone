@@ -6,13 +6,11 @@ body {
 }
 
 .btn {
-  background-image: linear-gradient(
-    144deg,
-    rgb(254, 222, 112) 0%,
-    rgb(240, 222, 131) 15%,
-    rgb(180, 123, 0) 50%,
-    rgb(237, 220, 133) 100%
-  );
+  background-image: linear-gradient(144deg,
+      rgb(254, 222, 112) 0%,
+      rgb(240, 222, 131) 15%,
+      rgb(180, 123, 0) 50%,
+      rgb(237, 220, 133) 100%);
 }
 
 .btnAnim {
@@ -38,14 +36,12 @@ body {
   position: absolute;
   inset: -50% -80%;
 
-  background: linear-gradient(
-    118deg,
-    #0000 42%,
-    #fff8d233 47%,
-    #ffffff8c 50%,
-    #fff8d226 53%,
-    #0000 58%
-  );
+  background: linear-gradient(118deg,
+      #0000 42%,
+      #fff8d233 47%,
+      #ffffff8c 50%,
+      #fff8d226 53%,
+      #0000 58%);
 
   transform: translateX(-45%);
 

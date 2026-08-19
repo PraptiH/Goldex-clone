@@ -22,7 +22,14 @@ export default function HeroSection() {
     const heroSlides = [
         {
             image: hero1,
-            objectPosition: "center center",
+            objectPosition: {
+                mobile: "60% center",
+                sm: "50% center",
+                md: "50% center",
+                lg: "center center",
+                xl: "45% center",
+                "2xl": "center center",
+            },
 
             content: (
                 <div className="bg-[#f4f4f4] p-2 rounded-[28px] inline-flex">
@@ -112,7 +119,13 @@ export default function HeroSection() {
 
         {
             image: hero2,
-            objectPosition: "75% center",
+            objectPosition: {
+                mobile: "75% center",
+                md: "70% center",
+                lg: "75% center",
+                xl: "80% center",
+                "2xl": "70% center",
+            },
 
             content: (
                 <div className="bg-[#f4f4f4] p-2 rounded-[28px] inline-flex">
@@ -151,7 +164,11 @@ export default function HeroSection() {
 
         {
             image: hero3,
-            objectPosition: "70% center",
+            objectPosition: {
+                mobile: "65% center",
+                lg: "70% center",
+                xl: "75% center",
+            },
 
             content: (
                 <div className="bg-[#f4f4f4] p-2 rounded-[28px] inline-flex">
@@ -211,7 +228,7 @@ export default function HeroSection() {
     ];
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-dvh 2xl:min-h-256 pt-20 lg:p-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-dvh 2xl:min-h-256 pt-20 lg:p-2 pb-20">
 
             <div className="order-1 lg:order-0 flex flex-col justify-center lg:justify-start px-5 sm:px-10 lg:px-[10.4%] pb-10 2xl:pb-20 pt-8 sm:pt-12 lg:pt-44 xl:pt-48 2xl:pt-52">
 
@@ -246,7 +263,7 @@ export default function HeroSection() {
             </div>
 
 
-            <div className="order-2 relative h-svh lg:h-full w-full overflow-hidden">
+            <div className="order-2 relative w-full overflow-hidden h-100 sm:h-150 lg:h-auto">
                 <HeroImageSlider images={heroSlides} />
             </div>
 
