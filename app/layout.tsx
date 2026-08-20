@@ -3,8 +3,10 @@ import "./globals.css";
 import { satoshi } from "./fonts";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer/Footer";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Goldexhub",
@@ -15,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${satoshi.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", satoshi.variable, "font-sans", geist.variable)}
     >
       <body id="top" className="min-h-full flex flex-col">
         <Navbar />
