@@ -42,7 +42,6 @@ export default function SecuritySection() {
                 if (entry.isIntersecting) {
                     setDirection(scrollDirection);
 
-                    // Restart the shine animation
                     setAnimationKey(
                         (previous) => previous + 1
                     );
@@ -95,7 +94,7 @@ export default function SecuritySection() {
                 </div>
             </div>
 
-            <p className="mt-6 max-w-132.5 text-lg text-center leading-normal">
+            <p className="mt-6 max-w-132.5 text-lg text-black text-center leading-normal">
                 Every trade and purchase is processed under a
                 registered jewelry shop. You always know exactly
                 where your gold is, who holds it, and you can walk
