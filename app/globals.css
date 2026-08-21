@@ -227,3 +227,70 @@ body {
     @apply font-sans;
   }
 }
+
+.shield-shine {
+    position: absolute;
+    inset: -30%;
+
+    mix-blend-mode: screen;
+
+    background: linear-gradient(
+        118deg,
+        transparent 44%,
+        rgba(255, 255, 255, 0.08) 47%,
+        rgba(255, 255, 255, 0.72) 50%,
+        rgba(255, 255, 255, 0.08) 53%,
+        transparent 56%
+    );
+
+    opacity: 0;
+}
+
+
+.shield-shine-down {
+    animation: shieldShineDown 1.2s ease-out forwards;
+}
+
+@keyframes shieldShineDown {
+    0% {
+        opacity: 0;
+        transform: translateX(-52%);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(52%);
+    }
+}
+
+.shield-shine-up {
+    animation: shieldShineUp 1.2s ease-out forwards;
+}
+
+@keyframes shieldShineUp {
+    0% {
+        opacity: 0;
+        transform: translateX(52%);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-52%);
+    }
+}

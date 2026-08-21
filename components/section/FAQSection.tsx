@@ -45,9 +45,7 @@ export default function FAQSection() {
             </div>
 
             <div className="w-full max-w-155 shrink-0 overflow-hidden relative">
-                <Accordion type="single"
-                    collapsible
-                    defaultValue="item-1" >
+                <Accordion defaultValue={["item-1"]}>
                     {items.map((item) => (
                         <AccordionItem key={item.value} value={item.value}
                             className="px-6 py-3.5 border-b last:border-b-0 border-black/10">
