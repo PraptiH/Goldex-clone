@@ -59,7 +59,7 @@ export default function FeatureButton({
                 </svg>
             </motion.a>
 
-            <motion.a href={href} className="pointer-events-none absolute left-0 top-0 z-20 flex flex-col items-center justify-center size-46 -translate-x-1/2 -translate-y-1/2 rounded-full 
+            <motion.a href={href} className="pointer-events-none absolute left-0 top-0 z-20 flex flex-col items-center justify-center size-40 -translate-x-1/2 -translate-y-1/2 rounded-full 
             bg-[linear-gradient(144deg,#f0de83,#c49a20)] text-center font-semibold text-black"
                 style={{ x, y }}
                 initial={{ scale: 0, opacity: 0 }}

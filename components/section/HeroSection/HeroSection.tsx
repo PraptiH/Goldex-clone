@@ -16,6 +16,7 @@ import chartLine from '@/public/Images/chart-line.svg'
 import userPlus from '@/public/Images/referral-user-plus.svg'
 import seal from '@/public/Images/referral-seal-percent.svg'
 import hand from '@/public/Images/referral-hand-arrow.svg'
+import AnimatedText from "./AnimatedText";
 
 export default function HeroSection() {
 
@@ -233,7 +234,18 @@ export default function HeroSection() {
             <div className="order-1 lg:order-0 flex flex-col justify-center lg:justify-start px-5 sm:px-10 lg:px-[10.4%] pb-10 2xl:pb-20 pt-8 sm:pt-12 lg:pt-44 xl:pt-48 2xl:pt-52">
 
                 <div className="flex flex-col items-start gap-4 sm:gap-5 w-full max-w-150 shrink-0">
-                    <h1 className="font-extrabold text-[36px] sm:text-5xl lg:text-[48px] xl:text-[56px] 2xl:text-[64px] leading-normal sm:leading-[1.12] w-full self-stretch">Your gold, always within reach.</h1>
+                    <h1 className="font-bold text-[36px] sm:text-5xl lg:text-[48px] xl:text-[56px] 2xl:text-[64px] leading-normal sm:leading-[1.12] w-full self-stretch">
+                        <span className="block ">
+                            <AnimatedText text="Your gold, always" />
+                        </span>
+
+                        <span className="block ">
+                            <AnimatedText
+                                text="within reach."
+                                delay={1}
+                            />
+                        </span>
+                    </h1>
                     <p className="text-base sm:text-lg lg:text-xl text-black/50 leading-relaxed sm:leading-normal w-full self-stretch">Trade, store, and receive real gold and silver, all from <br className="hidden sm:block" />
                         one app, all backed by shops you can actually visit.</p>
                 </div>
