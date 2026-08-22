@@ -1,3 +1,4 @@
+import FeatureSection from "@/components/section/FeatureSection/FeatureSection";
 import GlobalCTASection from "@/components/section/GlobalCTASection";
 import HeroSection from "@/components/section/HeroSection";
 import PartnerSection from "@/components/section/PartnerSection";
@@ -9,10 +10,11 @@ export default function Home() {
   return (
     <div className="flex-1">
       <HeroSection />
-      <PartnerSection/>
-      <ShopSection/>
-      <SecurityFAQSection/>
-      <GlobalCTASection/>
+      <PartnerSection />
+      <FeatureSection />
+      <ShopSection />
+      <SecurityFAQSection />
+      <GlobalCTASection />
     </div>
   );
 }

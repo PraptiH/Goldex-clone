@@ -13,9 +13,9 @@ const driftDuration = 10
 export default function PartnerSection() {
     const trackRef = useRef<HTMLDivElement>(null)
 
-    const partners = [hafsa, aah, karnaphuli, kds, gold,]
+    const partners = [hafsa, aah, karnaphuli, kds, gold,hafsa, aah, karnaphuli, kds, gold,hafsa, aah, karnaphuli, kds, gold]
 
-    const partnerList = [...partners, ...partners,]
+    const partnerList = [...partners, ...partners, ...partners]
 
     const pauseDrift = () => {
         if (trackRef.current) {
@@ -32,11 +32,11 @@ export default function PartnerSection() {
     return (
         <section className="py-12 lg:py-15 xl:py-20">
             <div
-                className="w-fulloverflow-hiddenlg:mask-[linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+                className="w-full overflow-hiddenlg:mask-[linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
                 onMouseEnter={pauseDrift}
                 onMouseLeave={resumeDrift}
             >
-                <div ref={trackRef} className="flex w-max items-center gap-0 cursor-pointer animate-marquee"
+                <div ref={trackRef} className="flex items-center gap-0 cursor-pointer animate-marquee"
                     style={{
                         animationDuration: `${driftDuration}s`,
                     }}
