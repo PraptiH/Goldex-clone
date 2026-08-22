@@ -1,3 +1,4 @@
+import AccountFeatures from "@/components/section/AccountFeatures";
 import FeatureSection from "@/components/section/FeatureSection/FeatureSection";
 import GlobalCTASection from "@/components/section/GlobalCTASection";
 import HeroSection from "@/components/section/HeroSection";
@@ -12,6 +13,7 @@ export default function Home() {
       <HeroSection />
       <PartnerSection />
       <FeatureSection />
+      <AccountFeatures/>
       <ShopSection />
       <SecurityFAQSection />
       <GlobalCTASection />
